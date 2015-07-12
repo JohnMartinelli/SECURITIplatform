@@ -1,13 +1,21 @@
 # SECURITIplatform
-# written by John Martinelli
+# written by John Martinelli (johnnymartinelli@gmail.com)
+
+# load our standard libraries
+
+import requests
+
+# load our internal-use-only libraries
 
 import config # loads our configuration
 import recon # loads our reconaissance class
 
-# GET PLACE DETAILS FROM Google Places API
+# reconnaisance/information gathering 
 
 reconWorker = recon.reconaissance() # instantiate our recon toolkit
 
-placeID = ""
-placeDetails = reconWorker.getDetails(config.GoogleAPIKey, placeID)
+# GET PLACE DETAILS FROM Google Places API
+
+placeID = "ChIJ974-UVGx2YgRzO_knHqgjJY" # test placeID with bicycle shop
+placeDetails = reconWorker.getDetails(config.GoogleAPIKey, config.outputType, placeID)
 
