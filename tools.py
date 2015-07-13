@@ -13,3 +13,23 @@ class toolkit:
 		r = requests.get(url)
                 print r.text
 		return r.text
+
+	def getVhosts(self, domain):
+		import sys
+		import re
+		import requests
+
+		from BeautifulSoup import BeautifulStoneSoup
+
+		url = 'http://www.tcpiputils.com/domain-neighbors'
+		values = {'domainneighbors' : domain}
+
+		vhostHTML = requests.get(url)
+		s = vhostHTML.text
+		
+		soup = BeautifulStoneSoup(s)
+		for results in soup.findAll('img', attrs={'src':'/images/ico-url.gif'}):
+			domain = results.get('alt')	
+			domainSplit = domain.split()
+			print str(domainSplit[1])
+

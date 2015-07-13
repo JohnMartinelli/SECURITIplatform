@@ -26,3 +26,11 @@ class reconaissance:
 		r = requests.get(url)
 		print r.text
 		return r.text
+
+	def whatweb(self, domain):
+
+		# leverage installed 'whatweb' software to gather intelligence on our target
+		
+		import subprocess
+		whatwebOutput = subprocess.Popen("/usr/bin/whatweb %s " % domain, shell=True, stdout=subprocess.PIPE).stdout.read()
+		return whatwebOutput

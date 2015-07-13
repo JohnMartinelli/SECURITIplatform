@@ -22,33 +22,44 @@ toolsWorker = tools.toolkit()
 #scanWorker = scan.scanners()
 #promoWorker = promo.promotion()
 
-# TEST 1: Convert Address to GPS Coordinates (Latitude, Longitude)
+print "TEST 1: Convert Address to GPS Coordinates (Latitude, Longitude)"
 
 address = "33069"
 gpsCoordinates = toolsWorker.address2gps(config.GoogleAPIKey, config.outputType, address)
 
-# TEST 2: Search For Doctors in Area
+print "TEST 2: Search For Doctors in Area"
 
 searchKeyword = "doctor"
+latitude = "26.2286939"
+longitude = "-80.1596041"
 placeSearch = reconWorker.searchBusiness(config.GoogleAPIKey, config.outputType, latitude, longitude, "prominence", searchKeyword)
 
-# TEST 3: GET PLACE DETAILS FROM Google Places API
+print "TEST 3: GET PLACE DETAILS FROM Google Places API"
 
 placeID = "ChIJ974-UVGx2YgRzO_knHqgjJY" # test placeID with bicycle shop
 placeDetails = reconWorker.getDetails(config.GoogleAPIKey, config.outputType, placeID)
 
-# TEST 4: Use 'whatweb' to Identify the CMS
+print "TEST 4: Get VHosts/Other Domains Hosted on IP"
 
+target = "www.securiti.us"
+vhosts = toolsWorker.getVhosts(target)
+
+print "TEST 5: Use 'whatweb' to Identify the CMS"
+
+target = "www.securiti.us"
 cmsType = reconWorker.whatweb(target)
+print cmsType
 
-# TEST 5: Use 'joomscan' for Joomla sites, 'wpscan' for Wordpress sites, or 'wapiti' for Unknown CMS sites to identify vulnerabilities
+# TEST 6: Use 'joomscan' for Joomla sites, 'wpscan' for Wordpress sites, or 'wapiti' for Unknown CMS sites to identify vulnerabilities
 
-# TEST 6: Push all data to mongoDB
+# TEST 7: Push all data to mongoDB
 
-# TEST 7: Implement Flask for a web-based GUI
+# TEST 8: Implement Flask for a web-based GUI
 
-# TEST 8: Upload JSON file of all businesses (ref: test 3) 
+# TEST 9: Upload JSON file of all businesses (ref: test 3) 
 
-# TEST 9: Scrape e-mail addresses of vulnerable businesses
+# TEST 10: Scrape e-mail addresses of vulnerable businesses
 
-# TEST 10: Send postcard to physical address of vulnerable businesses
+# TEST 11: Send e-mail blast through Mandrill
+
+# TEST 12: Send postcard to physical address of vulnerable businesses
