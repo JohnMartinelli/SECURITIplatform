@@ -40,12 +40,12 @@ print "TEST 1: Convert Address to GPS Coordinates (Latitude, Longitude)"
 
 address = "33069"
 gpsCoordinates = toolsWorker.address2gps(config.GoogleAPIKey, config.outputType, address)
-from pprint import pprint
-pprint(gpsCoordinates) # print "[!] '" + address + "' GPS coordinates: " + gpsCoordinates[0] + "," + gpsCoordinates[1]
+#from pprint import pprint
+#pprint(gpsCoordinates) # print "[!] '" + address + "' GPS coordinates: " + gpsCoordinates[0] + "," + gpsCoordinates[1]
 # results': [{u'address_componentsgeometry':locationlat
 #gpsCoordinates = json.loads(gpsCoordinates)
-print "lat: " + str(gpsCoordinates['results']['geometry']['location']['lat'])
-
+print "lat: " + gpsCoordinates
+exit()
 print "TEST 2: Search For Doctors in Area"
 
 searchKeyword = "doctor"
@@ -80,25 +80,30 @@ print "[$] CMS is " + cmsType
 scanResults = reconWorker.scan(target, cmsType)
 print scanResults
 
-# print "TEST 7: Generate 'Exposure Level' by ranking target vulnerabilities
+print "TEST 7: Generate 'Exposure Level' by ranking target vulnerabilities"
 
 exposureLevel = reconWorker.getExposure(scanResults, cmsType)
 print "[!] Exposure Level: " + exposureLevel
 
-# TEST 8: Push all data to mongoDB
+print "TEST 8: Push all data to mongoDB"
 
 mongoClient = MongoClient()
 
-# TEST 9: Push all vulnerable targets to sugarCRM
+print "TEST 9: Push all vulnerable targets to sugarCRM"
 
-# TEST 10: Generate Google Map showing color-coded vulnerability
+print "TEST 10: Upload JSON file of all businesses (ref: test 3)"
 
-# TEST 11: Implement Flask for a web-based GUI
+print "TEST 11: Scrape e-mail addresses of vulnerable businesses"
 
-# TEST 12: Upload JSON file of all businesses (ref: test 3) 
+print "TEST 12: Generate Google Map showing color-coded vulnerability"
 
-# TEST 13: Scrape e-mail addresses of vulnerable businesses
+print "TEST 13: Implement Flask for a web-based GUI"
 
-# TEST 14: Send e-mail blast through Mandrill
+print "TEST 14: Send e-mail blast through Mandrill"
 
-# TEST 15: Send postcard to physical address of vulnerable businesses
+print "TEST 15: Send postcard to physical address of vulnerable businesses"
+
+print "---------------------------------------"
+print "--- SECURITIplatform Test Complete! ---"
+print "---------------------------------------"
+

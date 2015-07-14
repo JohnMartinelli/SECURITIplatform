@@ -3,7 +3,8 @@ import requests
 class toolkit:
 	def address2gps(self, GoogleAPIKey, outputType, address):
 		
-		import json
+		import simplejson as json
+		import urllib
 
 	  	# documentation available at https://developers.google.com/maps/documentation/geocoding/
 
@@ -15,7 +16,14 @@ class toolkit:
 
 		if outputType == "json":
 			# parse json
-			output = json.loads(r.text)
+			rawOutput = urllib.urlopen(url)
+			output = json.loads(rawOutput)
+			location = str(output['results']['geometry']['location'])
+			for locations in location:
+				lat = locations['lat']
+				lng = locations['lng']
+			#latDict = json.dumps([s['geometry']['location'] for s in output['results']], indent=3)
+			return location
 		elif outputType == "xml":
 			# parse xml
 			output = "XML output received!"
