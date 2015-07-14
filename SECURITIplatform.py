@@ -3,7 +3,8 @@
 
 # load our standard libraries
 
-import requests
+import argparse # easy shell argument passing
+import requests # our go-to library for working with APIs
 
 # load our internal-use-only libraries
 
@@ -14,6 +15,17 @@ import recon # loads our reconaissance class
 
 import tools # loads our tools
 	     # def address2gps(self, GoogleAPIKey, address)
+
+# set up argparse
+
+parser = argparse.ArgumentParser(prog='SECURITIplatform', description='SECURITIplatform provides security insight into local business websites.')
+
+parser.add_argument('--target', help='optionally, the IP/domain to target')
+args = parser.parse_args()
+print args
+# test/example configuration
+
+target = "securiti.us"
 
 # reconnaisance/information gathering 
 
@@ -41,29 +53,39 @@ placeDetails = reconWorker.getDetails(config.GoogleAPIKey, config.outputType, pl
 
 print "TEST 4: Get VHosts/Other Domains Hosted on IP [under construction]"
 
-target = "www.securiti.us"
 vhosts = toolsWorker.getVhosts(target)
 
 print "TEST 5: Use 'whatweb' to Identify the CMS"
 
-target = "www.securiti.us"
-cmsType = reconWorker.whatweb(target)
-print cmsType
+whatwebResult = reconWorker.whatweb(target)
+print whatwebResult
 
 print "TEST 6: Use 'joomscan' for Joomla sites, 'wpscan' for Wordpress sites, or 'wapiti' for Unknown CMS sites to identify vulnerabilities"
 
-target = "www.securiti.us"
-wpscanResults = reconWorker.wpscan(target)
-print wpscanResults
+cmsType = reconWorker.whatCMS(whatwebResult)
 
-# TEST 7: Push all data to mongoDB
+print "[$] CMS is " + cmsType
 
-# TEST 8: Implement Flask for a web-based GUI
+scanResults = reconWorker.scan(target, cmsType)
+print scanResults
 
-# TEST 9: Upload JSON file of all businesses (ref: test 3) 
+# print "TEST 7: Generate 'Exposure Level' by ranking target vulnerabilities
 
-# TEST 10: Scrape e-mail addresses of vulnerable businesses
+exposureLevel = reconWorker.getExposure(scanResults, cmsType)
+print "Exposure Level: " + exposureLevel
 
-# TEST 11: Send e-mail blast through Mandrill
+# TEST 8: Push all data to mongoDB
 
-# TEST 12: Send postcard to physical address of vulnerable businesses
+# TEST 9: Push all vulnerable targets to sugarCRM
+
+# TEST 10: Generate Google Map showing color-coded vulnerability
+
+# TEST 11: Implement Flask for a web-based GUI
+
+# TEST 12: Upload JSON file of all businesses (ref: test 3) 
+
+# TEST 13: Scrape e-mail addresses of vulnerable businesses
+
+# TEST 14: Send e-mail blast through Mandrill
+
+# TEST 15: Send postcard to physical address of vulnerable businesses
