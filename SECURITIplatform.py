@@ -39,7 +39,7 @@ print "TEST 3: GET PLACE DETAILS FROM Google Places API"
 placeID = "ChIJ974-UVGx2YgRzO_knHqgjJY" # test placeID with bicycle shop
 placeDetails = reconWorker.getDetails(config.GoogleAPIKey, config.outputType, placeID)
 
-print "TEST 4: Get VHosts/Other Domains Hosted on IP"
+print "TEST 4: Get VHosts/Other Domains Hosted on IP [under construction]"
 
 target = "www.securiti.us"
 vhosts = toolsWorker.getVhosts(target)
@@ -50,7 +50,11 @@ target = "www.securiti.us"
 cmsType = reconWorker.whatweb(target)
 print cmsType
 
-# TEST 6: Use 'joomscan' for Joomla sites, 'wpscan' for Wordpress sites, or 'wapiti' for Unknown CMS sites to identify vulnerabilities
+print "TEST 6: Use 'joomscan' for Joomla sites, 'wpscan' for Wordpress sites, or 'wapiti' for Unknown CMS sites to identify vulnerabilities"
+
+target = "www.securiti.us"
+wpscanResults = reconWorker.wpscan(target)
+print wpscanResults
 
 # TEST 7: Push all data to mongoDB
 

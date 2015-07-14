@@ -34,3 +34,12 @@ class reconaissance:
 		import subprocess
 		whatwebOutput = subprocess.Popen("/usr/bin/whatweb %s " % domain, shell=True, stdout=subprocess.PIPE).stdout.read()
 		return whatwebOutput
+	
+	def wpscan(self, domain): 
+
+                # leverage installed 'wpscan' software to scan target for WordPress vulnerabilities
+
+                import subprocess
+                
+		wpscanOutput = subprocess.Popen("./dependencies/wpscan/wpscan.rb --batch --force -u %s " % domain, shell=True, stdout=subprocess.PIPE).stdout.read()
+                return wpscanOutput
