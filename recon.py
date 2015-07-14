@@ -9,10 +9,8 @@ class reconaissance:
 		# keep in mind &rankby= can take prominence(default) OR distance
 		# keyword, name, or types (https://developers.google.com/places/supported_types) should be passed as 'searchType'
 
-                url = "https://maps.googleapis.com/maps/api/place/search/" + outputType + "?key=" + GoogleAPIKey + "&lat=" + lat + "&lng=" + lng + "&" + searchType + "=" + keyword
-                
+                url = "https://maps.googleapis.com/maps/api/place/radarsearch/" + outputType + "?key=" + GoogleAPIKey + "&location=" + lat + "," + lng + "&keyword=" + keyword + "&radius=50000"
 		r = requests.get(url)
-                print r.text
 		return r.text
 
 	def getDetails(self, GoogleAPIKey, outputType, placeID):
@@ -24,7 +22,6 @@ class reconaissance:
 		url = "https://maps.googleapis.com/maps/api/place/details/" + outputType + "?key=" + GoogleAPIKey + "&placeid=" + placeID
 		
 		r = requests.get(url)
-		print r.text
 		return r.text
 
 	def whatweb(self, domain):
@@ -41,7 +38,7 @@ class reconaissance:
 
                 import subprocess
                 if cmsType == "WordPress":
-			scanOutput = subprocess.Popen("./dependencies/wpscan/wpscan.rb --batch --force -u %s " % domain, shell=True, stdout=subprocess.PIPE).stdout.read()
+			scanOutput = subprocess.Popen("./dependencies/wpscan/wpscan.rb -u %s --batch --no-color --force" % domain, shell=True, stdout=subprocess.PIPE).stdout.read()
 		elif cmsType == "Joomla":
 			scanOutput = subprocess.Popen("./dependencies/joomscan/joomscan.pl -u %s " % domain, shell=True, stdout=subprocess.PIPE).stdout.read()
 		else:
@@ -59,6 +56,7 @@ class reconaissance:
 			return "Unknown"
 
 	def getExposure(self, scanResults, scanType):
-		
+			
 		exposureScore = len(scanResults) # temporarily rank exposure based on size of scan results
-		return exposureScore
+		return str(exposureScore)
+
