@@ -2,7 +2,7 @@ import requests
 
 class reconaissance:
 
-        def searchBusiness(self, GoogleAPIKey, outputType, lat, lng, searchType, keyword):
+        def searchBusiness(self, GoogleAPIKey, outputType, lat, lng, keyword):
 
 		# documentation available at https://developers.google.com/places/webservice/search
 

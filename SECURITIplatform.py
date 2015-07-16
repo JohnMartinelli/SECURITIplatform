@@ -8,6 +8,7 @@ import requests # our go-to library for working with APIs
 from pymongo import MongoClient # integrate with mongoDB
 import datetime
 import json
+import safebrowsinglookup # Copyright 2015 Julien Sobrier, modified by Alexander Bikadorov
 
 # load our internal-use-only libraries
 
@@ -33,6 +34,8 @@ target = "securiti.us"
 
 reconWorker = recon.reconaissance() # instantiate our recon toolkit
 toolsWorker = tools.toolkit()
+safeBrowser = safebrowsinglookup.SafebrowsinglookupClient()
+
 #scanWorker = scan.scanners()
 #promoWorker = promo.promotion()
 
@@ -44,15 +47,15 @@ gpsCoordinates = toolsWorker.address2gps(config.GoogleAPIKey, config.outputType,
 #pprint(gpsCoordinates) # print "[!] '" + address + "' GPS coordinates: " + gpsCoordinates[0] + "," + gpsCoordinates[1]
 # results': [{u'address_componentsgeometry':locationlat
 #gpsCoordinates = json.loads(gpsCoordinates)
-print "lat: " + gpsCoordinates
-exit()
+#print "lat: " + gpsCoordinates
+
 print "TEST 2: Search For Doctors in Area"
 
 searchKeyword = "doctor"
 latitude = "26.2286939"
 longitude = "-80.1596041"
-placeSearch = reconWorker.searchBusiness(config.GoogleAPIKey, config.outputType, latitude, longitude, "prominence", searchKeyword)
-resultsNumber = "N/A"
+placeSearch = reconWorker.searchBusiness(config.GoogleAPIKey, config.outputType, latitude, longitude, searchKeyword)
+resultsNumber = str(len(placeSearch))
 
 print "[!] Found " + resultsNumber + " result(s) for '" + searchKeyword + "'."
 
@@ -60,7 +63,7 @@ print "TEST 3: GET PLACE DETAILS FROM Google Places API"
 
 placeID = "ChIJ974-UVGx2YgRzO_knHqgjJY" # test placeID with bicycle shop
 placeDetails = reconWorker.getDetails(config.GoogleAPIKey, config.outputType, placeID)
-print "[!] Got details from " + placeID + ":\n" + placeDetails
+print "[!] Got details from " + placeID + "."
 
 print "TEST 4: Get VHosts/Other Domains Hosted on IP [under construction]"
 
@@ -85,25 +88,31 @@ print "TEST 7: Generate 'Exposure Level' by ranking target vulnerabilities"
 exposureLevel = reconWorker.getExposure(scanResults, cmsType)
 print "[!] Exposure Level: " + exposureLevel
 
-print "TEST 8: Push all data to mongoDB"
+print "TEST 8: Query Google's SafeBrowsing API"
+
+newSafeBrowser = safeBrowser.lookup(target) 
+print newSafeBrowser
+print "TEST 9: Push all data to mongoDB"
 
 mongoClient = MongoClient()
 
-print "TEST 9: Push all vulnerable targets to sugarCRM"
+print "TEST 10: Push all vulnerable targets to sugarCRM"
 
-print "TEST 10: Upload JSON file of all businesses (ref: test 3)"
+print "TEST 11: Upload JSON file of all businesses (ref: test 3)"
 
-print "TEST 11: Scrape e-mail addresses of vulnerable businesses"
+print "TEST 12: Scrape e-mail addresses of vulnerable businesses"
 
-print "TEST 12: Generate Google Map showing color-coded vulnerability"
+print "TEST 13: Find competing companies on SERP page (http://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=belle%20vernon%20chiropractors)"
 
-print "TEST 13: Implement Flask for a web-based GUI"
+print "TEST 14: Generate Google Map showing color-coded vulnerability"
 
-print "TEST 14: Send e-mail blast through Mandrill"
+print "TEST 15: Implement Flask for a web-based GUI"
 
-print "TEST 15: Send postcard to physical address of vulnerable businesses"
+print "TEST 16: Send e-mail blast through Mandrill"
+
+
+print "TEST 16: Send e-mail blast through Mandrill"
+
+print "TEST 17: Send postcard to physical address of vulnerable businesses"
 
 print "---------------------------------------"
-print "--- SECURITIplatform Test Complete! ---"
-print "---------------------------------------"
-

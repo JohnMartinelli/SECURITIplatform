@@ -14,16 +14,18 @@ class toolkit:
                 url = "https://maps.googleapis.com/maps/api/geocode/" + outputType + "?key=" + GoogleAPIKey + "&address=" + address
 		r = requests.get(url)
 
+		output = "N/A"
+
 		if outputType == "json":
 			# parse json
 			rawOutput = urllib.urlopen(url)
-			output = json.loads(rawOutput)
-			location = str(output['results']['geometry']['location'])
-			for locations in location:
-				lat = locations['lat']
-				lng = locations['lng']
+			#output = json.loads(rawOutput)
+			#location = str(output['results']['geometry']['location'])
+			#for locations in location:
+			#lat = locations['lat']
+			#lng = locations['lng']
 			#latDict = json.dumps([s['geometry']['location'] for s in output['results']], indent=3)
-			return location
+			return output
 		elif outputType == "xml":
 			# parse xml
 			output = "XML output received!"
