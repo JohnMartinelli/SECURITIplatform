@@ -50,18 +50,18 @@ class toolkit:
 			domain = results.get('alt')	
 			domainSplit = domain.split()
 			print str(domainSplit[1])
-	
+
 	def pingCheck(self, domain):
-		
-		# check if target is pingable
+
+		# check if target domain is pingable or not
 
 		import os
 
 		response = os.system("ping -c 1 " + domain)
 
 		if response == 0:
-			pingable = "yes"
+			pingStatus = "pingable"
 		else:
-			pingable = "no"
+			pingStatus = "unpingable"
 
-		return pingable
+		return pingStatus

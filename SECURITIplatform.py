@@ -69,6 +69,11 @@ print "TEST 4: Get VHosts/Other Domains Hosted on IP [under construction]"
 
 vhosts = toolsWorker.getVhosts(target)
 
+print "TEST 4.1: Attempt To Ping Target"
+
+pingable = toolsWorker.pingCheck(target)
+print pingable
+
 print "TEST 5: Use 'whatweb' to Identify the CMS"
 
 whatwebResult = reconWorker.whatweb(target)
@@ -105,16 +110,17 @@ print "TEST 11: Upload JSON file of all businesses (ref: test 3)"
 with open("./details") as f:
 	for line in f:
 		from bson.json_util import loads
-		
+		from pprint import pprint
 		placeCheck = localDetails.find({"result.place_id": line.rstrip()}).count()
-
+	
 		if placeCheck == 0: # make sure our database doesn't already have this place_id
 			placeDetails = reconWorker.getDetails(config.GoogleAPIKey, config.outputType, line)
 			deserializedJSON = loads(placeDetails)
 			if deserializedJSON['status'] != "OK":
-				time.sleep(86400) # sleep 24 hours
-                      		placeDetails = reconWorker.getDetails(config.GoogleAPIKey, config.outputType, line)
-                      		deserializedJSON = loads(placeDetails)
+				import time
+				time.sleep(86400)
+				placeDetails = reconWorker.getDetails(config.GoogleAPIKey, config.outputType, line)
+                        	deserializedJSON = loads(placeDetails) 
 			localDetails.insert(deserializedJSON)		
 
 print "TEST 12: Scrape e-mail addresses of vulnerable businesses"
@@ -131,4 +137,3 @@ print "TEST 16: Send e-mail blast through Mandrill"
 print "TEST 16: Send e-mail blast through Mandrill"
 
 print "TEST 17: Send postcard to physical address of vulnerable businesses"
-
