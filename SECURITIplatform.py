@@ -95,10 +95,23 @@ print newSafeBrowser
 print "TEST 9: Push all data to mongoDB"
 
 mongoClient = MongoClient()
+db = mongoClient.securiti
+localDetails = db.localDetails
 
 print "TEST 10: Push all vulnerable targets to sugarCRM"
 
 print "TEST 11: Upload JSON file of all businesses (ref: test 3)"
+
+with open("./details") as f:
+	for line in f:
+		from bson.json_util import loads
+		
+		placeCheck = localDetails.find({"result.place_id": line.rstrip()}).count()
+
+		if placeCheck == 0: # make sure our database doesn't already have this place_id
+			placeDetails = reconWorker.getDetails(config.GoogleAPIKey, config.outputType, line)
+			deserializedJSON = loads(placeDetails)
+			localDetails.insert(deserializedJSON)		
 
 print "TEST 12: Scrape e-mail addresses of vulnerable businesses"
 
@@ -114,5 +127,3 @@ print "TEST 16: Send e-mail blast through Mandrill"
 print "TEST 16: Send e-mail blast through Mandrill"
 
 print "TEST 17: Send postcard to physical address of vulnerable businesses"
-
-print "---------------------------------------"

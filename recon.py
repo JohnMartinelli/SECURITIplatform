@@ -19,7 +19,7 @@ class reconaissance:
 
 		# given a Google place_id, get all of the [non-Google Apps for Work] data 
 
-		url = "https://maps.googleapis.com/maps/api/place/details/" + outputType + "?key=" + GoogleAPIKey + "&placeid=" + placeID
+		url = "https://maps.googleapis.com/maps/api/place/details/" + outputType + "?key=" + GoogleAPIKey + "&placeid=" + placeID.rstrip()
 		
 		r = requests.get(url)
 		return r.text
