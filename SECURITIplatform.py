@@ -111,6 +111,10 @@ with open("./details") as f:
 		if placeCheck == 0: # make sure our database doesn't already have this place_id
 			placeDetails = reconWorker.getDetails(config.GoogleAPIKey, config.outputType, line)
 			deserializedJSON = loads(placeDetails)
+			if deserializedJSON['status'] != "OK":
+				time.sleep(86400) # sleep 24 hours
+                      		placeDetails = reconWorker.getDetails(config.GoogleAPIKey, config.outputType, line)
+                      		deserializedJSON = loads(placeDetails)
 			localDetails.insert(deserializedJSON)		
 
 print "TEST 12: Scrape e-mail addresses of vulnerable businesses"
@@ -127,3 +131,4 @@ print "TEST 16: Send e-mail blast through Mandrill"
 print "TEST 16: Send e-mail blast through Mandrill"
 
 print "TEST 17: Send postcard to physical address of vulnerable businesses"
+
