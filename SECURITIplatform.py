@@ -105,34 +105,48 @@ localDetails = db.localDetails
 
 print "TEST 10: Push all vulnerable targets to sugarCRM"
 
-print "TEST 11: Upload JSON file of all businesses (ref: test 3)"
+print "TEST 11: Implement Flask for a web-based GUI"
+
+from flask import Flask
+app = Flask(__name__)
+
+def hello_world():
+    return 'Hello World!'
+
+if __name__ == '__main__':
+    app.run()
+
+print "TEST 12: Upload JSON file of all businesses (ref: test 3)"
 
 with open("./details") as f:
 	for line in f:
 		from bson.json_util import loads
 		from pprint import pprint
+
 		placeCheck = localDetails.find({"result.place_id": line.rstrip()}).count()
 	
-		if placeCheck == 0: # make sure our database doesn't already have this place_id
+		if placeCheck != 0: # make sure our database doesn't already have this place_id
 			placeDetails = reconWorker.getDetails(config.GoogleAPIKey, config.outputType, line)
 			deserializedJSON = loads(placeDetails)
+	
+			target = deserializedJSON['result']['website']		
+			whatwebResult = reconWorker.whatweb(target)
+			cmsType = reconWorker.whatCMS(whatwebResult)
+			scanResults = reconWorker.scan(target, cmsType)
+			print scanResults			
+
 			if deserializedJSON['status'] != "OK":
 				import time
 				time.sleep(86400)
 				placeDetails = reconWorker.getDetails(config.GoogleAPIKey, config.outputType, line)
                         	deserializedJSON = loads(placeDetails) 
-			localDetails.insert(deserializedJSON)		
-
-print "TEST 12: Scrape e-mail addresses of vulnerable businesses"
+#			localDetails.insert(deserializedJSON)		
 
 print "TEST 13: Find competing companies on SERP page (http://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=belle%20vernon%20chiropractors)"
 
 print "TEST 14: Generate Google Map showing color-coded vulnerability"
 
-print "TEST 15: Implement Flask for a web-based GUI"
-
-print "TEST 16: Send e-mail blast through Mandrill"
-
+print "TEST 15: Scrape e-mail addresses of vulnerable businesses"
 
 print "TEST 16: Send e-mail blast through Mandrill"
 
