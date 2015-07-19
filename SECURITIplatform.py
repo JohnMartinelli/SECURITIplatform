@@ -97,6 +97,7 @@ print "TEST 8: Query Google's SafeBrowsing API"
 
 newSafeBrowser = safeBrowser.lookup(target) 
 print newSafeBrowser
+
 print "TEST 9: Push all data to mongoDB"
 
 mongoClient = MongoClient()
@@ -114,9 +115,40 @@ def hello_world():
     return 'Hello World!'
 
 if __name__ == '__main__':
-    app.run()
+	pass#    app.run()
 
-print "TEST 12: Upload JSON file of all businesses (ref: test 3)"
+print "TEST: Scan All place_id's with WPScan or Joomscan"
+
+with open("./details") as f:
+        for line in f:
+                from bson.json_util import loads
+                from pprint import pprint
+
+		scanDetails = db.scanDetails
+		placeDetails = reconWorker.getDetails(config.GoogleAPIKey, config.outputType, line)
+		deserializedJSON = loads(placeDetails)
+
+		try:
+			target = deserializedJSON['result']['website']
+		except:
+			target = "securiti.us"
+                
+		placeCheck = scanDetails.find({"place_id": line.rstrip()}).count()
+	
+                if placeCheck == 0: # make sure our database doesn't already have this place_id
+			print "not found"
+			
+			whatwebResult = reconWorker.whatweb(target)
+			cmsType = reconWorker.whatCMS(whatwebResult)
+			scanResults = reconWorker.scan(target, cmsType)
+			try:
+				scanDetails.insert({"place_id": deserializedJSON['result']['place_id'], "domain": target, "scan": scanResults, "cmsType": cmsType})
+			except:
+				pass
+			pass
+		else:
+			print "found"
+
 
 with open("./details") as f:
 	for line in f:
@@ -146,8 +178,4 @@ print "TEST 13: Find competing companies on SERP page (http://ajax.googleapis.co
 
 print "TEST 14: Generate Google Map showing color-coded vulnerability"
 
-print "TEST 15: Scrape e-mail addresses of vulnerable businesses"
-
-print "TEST 16: Send e-mail blast through Mandrill"
-
-print "TEST 17: Send postcard to physical address of vulnerable businesses"
+print "TEST 15: Send postcard to physical address of vulnerable businesses"
