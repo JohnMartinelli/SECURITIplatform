@@ -97,11 +97,28 @@ print "TEST 8: Query Google's SafeBrowsing API"
 
 newSafeBrowser = safeBrowser.lookup(target) 
 print newSafeBrowser
+
 print "TEST 9: Push all data to mongoDB"
 
 mongoClient = MongoClient()
 db = mongoClient.securiti
 localDetails = db.localDetails
+safeBrowsingDetails = db.safeBrowsingDetails
+
+for business in localDetails.find():
+	try:
+		url = business["result"]["website"]
+		print "Checking " + business["result"]["website"]
+		lookup = safeBrowser.lookup(url.rstrip())
+		print "status: "+ lookup[url]
+		json = {"url": url.rstrip(), "status": lookup[url]}
+		safeBrowsingDetails.insert(json)
+	except:
+		print "Error with " + str(business["_id"])
+		pass
+	pass	#lookup = safeBrowser.lookup(business.rstrip())
+		#print lookup
+
 
 print "TEST 10: Push all vulnerable targets to sugarCRM"
 
@@ -114,7 +131,7 @@ def hello_world():
     return 'Hello World!'
 
 if __name__ == '__main__':
-    app.run()
+	pass #    app.run()
 
 print "TEST 12: Upload JSON file of all businesses (ref: test 3)"
 
@@ -124,24 +141,18 @@ with open("./details") as f:
 		from pprint import pprint
 
 		placeCheck = localDetails.find({"result.place_id": line.rstrip()}).count()
-	
-		if placeCheck != 0: # make sure our database doesn't already have this place_id
+		if placeCheck == 0: # make sure our database doesn't already have this place_idi
 			placeDetails = reconWorker.getDetails(config.GoogleAPIKey, config.outputType, line)
-			deserializedJSON = loads(placeDetails)
-	
-			target = deserializedJSON['result']['website']		
-			whatwebResult = reconWorker.whatweb(target)
-			cmsType = reconWorker.whatCMS(whatwebResult)
-			scanResults = reconWorker.scan(target, cmsType)
-			print scanResults			
-
-			if deserializedJSON['status'] != "OK":
-				import time
-				time.sleep(86400)
-				placeDetails = reconWorker.getDetails(config.GoogleAPIKey, config.outputType, line)
-                        	deserializedJSON = loads(placeDetails) 
-#			localDetails.insert(deserializedJSON)		
-
+			deserializedJSON = loads(placeDetails)	
+			print "not found, inserting"
+#			target = deserializedJSON['result']['website']		
+#			whatwebResult = reconWorker.whatweb(target)
+#			cmsType = reconWorker.whatCMS(whatwebResult)
+#			scanResults = reconWorker.scan(target, cmsType)
+#			print scanResults			
+			localDetails.insert(deserializedJSON)		
+		else:
+			print "found"
 print "TEST 13: Find competing companies on SERP page (http://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=belle%20vernon%20chiropractors)"
 
 print "TEST 14: Generate Google Map showing color-coded vulnerability"
