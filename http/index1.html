@@ -1,0 +1,835 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>SECURITIplatform | Dashboard</title>
+
+<!--[if IE 6]>
+<script src="js/DD_belatedPNG_0.0.8a-min.js"></script>
+<script>
+  
+  DD_belatedPNG.fix('#header');
+  DD_belatedPNG.fix('.notification');
+  DD_belatedPNG.fix('.submit');
+  DD_belatedPNG.fix('#info');
+  DD_belatedPNG.fix('.pngfix');
+  
+</script>
+<![endif]--> 
+
+
+<!-- LOAD JQUERY FROM GOOGLE CDN  --> 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+
+<!-- LOAD CUSTOM SCRIPTS AND JQUERY UI LIBRARY  --> 
+<script type="text/javascript" src="js/scripts.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js"></script>
+
+<!-- LOAD FACEBOX -->
+<script type="text/javascript" src="js/facebox.js"></script>
+<link href="css/facebox.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="js/iepngfix_tilebg.js"></script>
+
+<!-- MASTER STYLESHEET --> 
+ <link href="css/styles.css" rel="stylesheet" type="text/css" />
+
+         
+<!-- START THE MENU --> 
+<script type="text/javascript">
+
+// initialise plugins
+jQuery(function(){
+	jQuery('ul.sf-menu').superfish();
+});
+
+</script>
+
+
+</head>
+
+<body>
+	<!--START HEADER  -->
+    <div id="header">
+    
+      <div id="head_wrap" class="container_12">
+            
+        <!--START LOGO  --> 
+        <div id="logo" class="grid_8">
+
+			<h1 style="letter-spacing:0"><strong>SECURITI</strong>platform</h1>
+        
+        </div>
+        <!-- END LOGO -->
+        
+        <!-- START USERPANEL --> 
+        <div id="user_panel" class="grid_4">
+          
+            <ul>
+            
+                <li><a href="#">USERNAME</a></li>
+                <!-- MODAL LINK - USE TH REL="FACEBOX" TO BRING UP MODAL PAGES-->
+                <li><a href="#info" rel="facebox">Notifications (<strong>2</strong>)</a></li>
+                <li><a href="#">Log Out</a></li>
+                
+            </ul>
+            
+			
+		</div>
+        <!-- END USERPANEL --> 
+        
+        <!--START NAVIGATION  -->
+        <div id="nav" class="grid_9">
+        
+            <ul class="sf-menu">
+            
+                <!-- class "current" defines this as current page -->
+                <li><a href="#"  class="current">Dashboard</a></li>
+                
+                <!-- Example of an item with nested list, this will display as a drop down menu -->
+                <li><a href="#">Manage Digital Assets</a>
+            
+                <ul>
+                	<!-- example of sub-menu level. -->
+                    <li><a href="#">Add New Digital Asset</a></li>
+                    <li><a href="#">Overview of All Assets</a></li>
+                </ul>
+
+            </li>
+               
+          
+            <li><a href="#">Reports</a>
+            
+                <!-- example of sub-menu level. -->
+                <ul>
+                
+                <li><a href="#">View Executive Report</a></li>
+                <li><a href="#">Generate Single Report</a></li>
+                
+                </ul>
+            
+            </li>
+            <li><a href="#">Toolkit</a>
+                            <ul>
+                
+                <li><a href="#">Information Gathering</a>
+                            <!-- example of sub-menu level. -->
+                        <ul>
+                        
+                            <li><a href="#">Automated Wizard</a></li>
+                            <li><a href="#">Domain Information</a></li>
+                            <li><a href="#">CMS Identification</a></li>
+                            <li><a href="#">Port Scanning</a></li>
+
+                        </ul>
+                    </li>
+                                    <li><a href="#">Vulnerability Assessment</a></li>
+
+                <li><a href="#">Penetration Testing</a></li>
+                
+                </ul>
+            </li>
+         
+            
+            <li><a href="#">Configuration</a></li>
+            <li><a href="#">Customer Support</a></li>
+            
+            </ul> 
+            
+      </div>
+      <!-- END NAV -->
+       
+    <!-- START SEARCH -->
+    <div id="search" class="grid_3 buttons">
+    
+        <form id="form1" name="form1" method="post" action="">
+        
+            <input type="text" class="text medium" id="search2" />
+            <input name="Submit" type="submit" class="submit special" value="Go" id="Submit" />
+        
+        </form>
+        
+    </div>
+    <!-- END SEARCH -->
+      
+    </div>
+    <!-- END HEAD_WRAP (CONTAINER FOR LOGO AND NAVIGATION -->
+    
+    </div>
+    <!--END HEADER (FULLL WIDTH WRAPPER WITH BG) -->
+
+    <!--START CONTENT  -->
+    
+    <div id="content" class="container_12">
+        
+    <div class="grid_12">
+        
+        <!-- start notification -->
+       	<div class="notification lightbulb canhide">
+        
+     		<p>
+            <strong>WELCOME:</strong>
+            Welcome back to SECURITIplatform. Your last login was <strong>July 19th, 2015</strong> at <strong>4:12PM EST</strong> from <strong>192.168.1.12</strong>.
+            </p>
+            
+		</div>
+        <!-- end notification -->
+                
+       
+       <h3>Security Overview of Digital Assets</h3>
+       
+          <p>Based on your configuration of SECURITIplatform, the following overview gives you an at-a-glance look at the inside of your digital security landscape.</p>
+          
+            
+<!-- START GOOGLE CHARTS EXAMPLE 
+
+To change the colour of the charts you need to change the value of chco=258cd1 where
+258cd1 is the hex value of the colour you want to change the chart to.
+
+-->
+            
+<img src="http://chart.apis.google.com/chart?chs=940x250&amp;chf=bg,s,ffffff|c,s,ffffff&amp;chxt=x,y&amp;chxl=0:|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|1:|Low|Med|High&amp;cht=bvs&amp;chd=t:100.00,50.00,40.00,26.00,40.00,60.00,44.00,56.00,66.00,80.00,46.00,32.00,38.00,38.00,70.00,90.00,66.00,50.00,30.00,34.00,54.00,32.00,20.00,44.00,66.00,88.00,66.00,44.00,30.00,20.00,46.00&amp;chco=a11e06&amp;chbh=25" alt="Google Chart"/>
+            
+<!-- END GOOGLE CHARTS EXAMPLE -->
+            
+    </div>
+
+	<div class="container_12">
+    	
+        <!-- 2 COLUMN EXAMPLE-->
+        <div class="grid_6">
+          
+         <h3>Two Column Example</h3>
+         
+         
+        <table border="0" cellspacing="0" cellpadding="0">
+        
+            <tr>
+            
+                <td><img src="http://chart.apis.google.com/chart?chs=440x120&amp;chf=bg,s,ffffff&amp;cht=ls&amp;chd=t:23.52,20.58,26.47,23.52,22.05,19.11,17.64,22.05,23.52,33.82,48.52,33.82,23.52,23.52,23.52,100.00,0.00,23.52,23.52,27.94,20.58,23.52&amp;chco=a11e06" alt="Google Chart"/></td>
+            </tr>
+        </table>
+    
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        
+            <tr>
+            
+                <th scope="col">Integer </th>
+                <th scope="col">Position</th>
+                <th scope="col">Dec-10</th>
+                <th scope="col">Manas </th>
+                <th scope="col">&nbsp;</th>
+            </tr>
+            
+            <tr>
+            
+                <td scope="col">Customers</td>
+                <td scope="col">+ 24</td>
+                <td scope="col">821.25</td>
+                <td scope="col">892.55</td>
+                <td scope="col">
+                <img src="images/16X16/chart_bar.png" alt="Bar Chart"  class="pngfix"/>
+                <img src="images/16X16/zoom.png" alt="Search" class="pngfix" /></td>
+            </tr>
+            
+            <tr>
+            
+                <td scope="col">Products</td>
+                <td scope="col">- 3</td>
+                <td scope="col">1084.22</td>
+                <td scope="col">1324.51</td>
+                <td scope="col"><img src="images/16X16/chart_bar.png" alt="Bar Chart" /> <img src="images/16X16/zoom.png" alt="Search" /></td>
+            </tr>
+            
+            <tr>
+            
+                <td scope="col">Subscriptions</td>
+                <td scope="col">+ 102</td>
+                <td scope="col">784.12</td>
+                <td scope="col">912.87</td>
+                <td scope="col"><img src="images/16X16/chart_bar.png" alt="Bar Chart" /> <img src="images/16X16/zoom.png" alt="Search" /></td>
+            </tr>
+            
+            <tr>
+            
+                <td scope="col">Users</td>
+                <td scope="col">+14</td>
+                <td scope="col">342.15</td>
+                <td scope="col">623.63</td>
+                <td scope="col"><img src="images/16X16/chart_bar.png" alt="Bar Chart" /> <img src="images/16X16/zoom.png" alt="Search" /></td>
+            </tr>
+        </table>
+    </div>
+	<!-- END 2 COLUMN EXAMPLE DIV - LEFT-->
+   
+   	  <!-- 2 COLUMN EXAMPLE-->
+      <div class="grid_6">
+      
+      <h3>Two Column Example</h3>
+      
+      <!--START ACCORDION  -->
+      <!-- TO ADD A NEW SECTION SIMPLY START WITH A NEW H3 FOR THE HEADER, FOLLOWED BY A DIV CONTAINING YOUR CONTENT -->
+      
+      <div id="accordion">
+	
+        <h3><a href="#">Section 1</a></h3>
+        
+        <div>
+        
+            <p>
+            
+            Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+            ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+            amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+            odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+            Phasellus eu ligula. Vestibulum sit amet
+            purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
+            velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
+            suscipit faucibus urna.            </p>
+        </div>
+        
+        <h3><a href="#">Section 2</a></h3>
+        
+        <div>
+        
+            <p>
+            
+            Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
+            purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
+            velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
+            suscipit faucibus urna.</p>
+            
+            <p>
+            
+            Phasellus eu ligula. Vestibulum sit amet
+            purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
+            velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
+            suscipit faucibus urna.</p>
+        </div>
+        
+        <h3><a href="#">Section 3</a></h3>
+        
+        <div>
+        
+            <p>
+            
+            Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
+            Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
+            ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
+            lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.            </p>
+            
+            <ul>
+            
+                <li>List item one</li>
+                <li>List item two</li>
+                <li>List item three</li>
+                
+            </ul>
+            
+        </div>
+    </div>
+	<!--END ACCORDION  -->
+    
+    </div>
+    <!-- END 2 COLUMN EXAMPLE DIV - RIGHT--> 
+    
+      	</div>
+
+        <div class="grid_12">
+        
+            <h3>Notifications</h3>
+            
+            <p>Visual Admin includes 5 notifications, and you can always make your own easily. Click to watch them fade away!</p>
+            
+            
+            <!--START NOTIFICATIONS  -->
+            
+            <!-- WARNING - USES CLASS OF "WARNING" and the CANHIDE ENABLES CICK TO FADE AWAY-->
+            <div class="notification warning canhide">
+            	
+                <p><strong>WARNING: </strong>
+                This is a warning message. You can use this to warn users 
+                e.g. running out of space. Like all messages you can click me to hide me again.</p>
+            </div>
+            
+            <!-- INFORMATION - USES CLASS OF "INFORMATION" and the CANHIDE ENABLES CICK TO FADE AWAY-->
+            <div class="notification information canhide">
+            
+                <p><strong>INFORMATION: </strong>
+                This is a message for information, this could be used alongside the general notification message at the top of this demo. 
+                Click me to hide me.</p>
+            </div>    
+            
+            <!-- SUCCESS - USES CLASS OF "SUCCESS" and the CANHIDE ENABLES CICK TO FADE AWAY-->
+            <div class="notification success canhide">
+            
+                <p><strong>SUCCESS: </strong>
+                Yay! Everyone likes to be a sucess so why not use me to show your users or visitors that they did something that succeeded.</p>
+            </div>  
+            
+            <!-- FAILURE - USES CLASS OF "FAILURE" and the CANHIDE ENABLES CICK TO FADE AWAY-->
+            <div class="notification failure canhide">
+            
+                <p><strong>FAILURE: </strong>
+                This is a failure message, but hey it's not all doom and gloom you can click me and I'll go away and hide again.</p>
+                
+            </div>
+            
+        </div>
+        <!--END NOTIFICATIONS  -->
+
+
+	<!-- START IMAGE GALLERY -->
+    <div class="grid_12">
+    
+    <h3>Image Gallery</h3>
+	
+<ul id="imglist">
+    
+        <li><a href="images/thumb1_big.jpg" rel="facebox"><img src="images/thumb1.jpg" width="100" height="100" alt="Image1" /></a></li>
+        <li><a href="images/thumb2_big.jpg" rel="facebox"><img src="images/thumb2.jpg" width="100" height="100" alt="Image1" /></a></li>
+        <li><a href="images/thumb3_big.jpg" rel="facebox"><img src="images/thumb3.jpg" width="100" height="100" alt="Image1" /></a></li>
+        <li><a href="images/thumb4_big.jpg" rel="facebox"><img src="images/thumb4.jpg" width="100" height="100" alt="Image1" /></a></li>
+        <li><a href="images/thumb5_big.jpg" rel="facebox"><img src="images/thumb5.jpg" width="100" height="100" alt="Image1" /></a></li>
+        <li><a href="images/thumb6_big.jpg" rel="facebox"><img src="images/thumb6.jpg" width="100" height="100" alt="Image1" /></a></li>
+		<li><a href="images/thumb7_big.jpg" rel="facebox"><img src="images/thumb7.jpg" width="100" height="100" alt="Image1" /></a></li>
+        <li><a href="images/thumb8_big.jpg" rel="facebox"><img src="images/thumb8.jpg" width="100" height="100" alt="Image1" /></a></li>
+        <li><a href="images/thumb7_big.jpg" rel="facebox"><img src="images/thumb7.jpg" width="100" height="100" alt="Image1" /></a></li>
+        <li><a href="images/thumb5_big.jpg" rel="facebox"><img src="images/thumb5.jpg" width="100" height="100" alt="Image1" /></a></li>
+        <li><a href="images/thumb6_big.jpg" rel="facebox"><img src="images/thumb6.jpg" width="100" height="100" alt="Image1" /></a></li>
+        <li><a href="images/thumb1_big.jpg" rel="facebox"><img src="images/thumb1.jpg" width="100" height="100" alt="Image1" /></a></li>
+        <li><a href="images/thumb4_big.jpg" rel="facebox"><img src="images/thumb4.jpg" width="100" height="100" alt="Image1" /></a></li>
+        <li><a href="images/thumb3_big.jpg" rel="facebox"><img src="images/thumb3.jpg" width="100" height="100" alt="Image1" /></a></li>
+    
+    </ul>
+    </div>
+    <!-- END IMAGE GALLERY -->
+    
+
+	<!--START ELEMENT EXAMPLES  -->
+    <div class="grid_12">
+    
+     <h3>Element Examples</h3>
+     
+	<!-- START TABS - TO ADD A NEW TABE ADD A NEW LIST ITEM WITH AN ID E.G. #TABS-3
+    	 THEN YORU CONTENT SHOLD BE IN A CONTAINING DIV WITH TEH SME NAME  -->
+    
+     <div id="tabs">
+     
+        <ul>
+        	<!-- THESE ARE THE CLICKABLE TAB HEADERS -->
+            <li><a href="#tabs-1">Tables</a></li>
+            <li><a href="#tabs-2">Forms</a></li>
+            <li><a href="#tabs-3">Typography</a></li>
+            <li><a href="#tabs-4">Other Elements</a></li>
+            
+        </ul>
+        
+     <!-- TAB-1 --> 
+     <div id="tabs-1">
+        
+            <h3>Table Example</h3>
+            
+            <p>Tables are a great way of displaying lots of data, and logically. The default styling on the tables is unobtrusive and enables both text and images as show in the example below.</p>
+            
+            <!-- START TABULAR DATA EXAMPLE -->
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            
+                <tr>
+                
+                    <th width="4%" scope="col"><input type="checkbox" name="checkbox" id="checkbox" class="checkall" />
+                    <label for="checkbox"></label></th>
+                    <th width="7%" scope="col">Status</th>
+                    <th width="29%" scope="col">Name</th>
+                    <th width="38%" scope="col">E-Mail</th>
+                    <th width="11%" scope="col">Start Date</th>
+                    <th width="11%" scope="col">End Date</th>
+                </tr>
+                
+                <tr>
+                
+                    <td scope="col"><input type="checkbox" name="checkbox2" id="checkbox2" /></td>
+                    <td scope="col"><img src="images/16X16/status_online.png" alt="Online" /></td>
+                  	<td scope="col">John Doe</td>
+                    <td scope="col"><a href="#">john.doe@myinternet.com</a></td>
+                    <td scope="col">12/12/2009</td>
+                    <td scope="col">24/4/2010</td>
+                </tr>
+                
+                <tr>
+                
+                    <td scope="col"><input type="checkbox" name="checkbox3" id="checkbox3" /></td>
+                    <td scope="col"><img src="images/16X16/status_online.png" alt="Online" /><img src="images/16X16/shield.png" alt="Shield" /><img src="images/16X16/medal_gold_3.png" alt="Gold" /></td>
+                  	<td scope="col">John Doe</td>
+                    <td scope="col"><a href="#">john.doe@myinternet.com</a></td>
+                    <td scope="col">12/12/2009</td>
+                    <td scope="col">24/4/2010</td>
+                </tr>
+                
+                <tr>
+                    <td scope="col"><input type="checkbox" name="checkbox4" id="checkbox4" /></td>
+                    <td scope="col"><img src="images/16X16/status_offline.png" alt="Offline" border="0" usemap="#O" /></td>
+                    <td scope="col">John Doe</td>
+                    <td scope="col"><a href="#">john.doe@myinternet.com</a></td>
+                    <td scope="col">12/12/2009</td>
+                    <td scope="col">24/4/2010</td>
+                </tr>
+                
+                <tr>
+                
+                    <td scope="col"><input type="checkbox" name="checkbox5" id="checkbox5" /></td>
+                    <td scope="col"><img src="images/16X16/status_online.png" alt="Online" /><img src="images/16X16/shield.png" alt="Shield" /></td>
+                 	<td scope="col">John Doe</td>
+                    <td scope="col"><a href="#">john.doe@myinternet.com</a></td>
+                    <td scope="col">12/12/2009</td>
+                    <td scope="col">24/4/2010</td>
+                </tr>
+                
+                <tr>
+                
+                    <td scope="col"><input type="checkbox" name="checkbox6" id="checkbox6" /></td>
+                    <td scope="col"><img src="images/16X16/status_offline.png" alt="Offline" border="0" usemap="#O" /><img src="images/16X16/medal_bronze_1.png" alt="Bronze" /></td>
+                  	<td scope="col">John Doe</td>
+                    <td scope="col"><a href="#">john.doe@myinternet.com</a></td>
+                    <td scope="col">12/12/2009</td>
+                    <td scope="col">24/4/2010</td>
+                </tr>
+
+
+                
+                <tr>
+                    <td scope="col"><input type="checkbox" name="checkbox7" id="checkbox7" /></td>
+                    <td scope="col"><img src="images/16X16/status_offline.png" alt="Offline" border="0" usemap="#O" /></td>
+                 	<td scope="col">John Doe</td>
+                    <td scope="col"><a href="#">john.doe@myinternet.com</a></td>
+                    <td scope="col">12/12/2009</td>
+                    <td scope="col">24/4/2010</td>
+                </tr>
+                
+                <tr>
+                    <td scope="col"><input type="checkbox" name="checkbox8" id="checkbox8" /></td>
+                    <td scope="col"><img src="images/16X16/status_online.png" alt="Online" /><img src="images/16X16/shield.png" alt="Shield" /></td>
+                  	<td scope="col">John Doe</td>
+                    <td scope="col"><a href="#">john.doe@myinternet.com</a></td>
+                    <td scope="col">12/12/2009</td>
+                    <td scope="col">24/4/2010</td>
+                </tr>
+                
+                <tr>
+                
+                    <td scope="col"><input type="checkbox" name="checkbox9" id="checkbox9" /></td>
+                    <td scope="col"><img src="images/16X16/status_online.png" alt="Online" /><img src="images/16X16/medal_silver_1.png" alt="Silver" /></td>
+                  	<td scope="col">John Doe</td>
+                    <td scope="col"><a href="#">john.doe@myinternet.com</a></td>
+                    <td scope="col">12/12/2009</td>
+                    <td scope="col">24/4/2010</td>
+                </tr>
+                
+                <tr>
+                
+                    <td scope="col"><input type="checkbox" name="checkbox10" id="checkbox10" /></td>
+                    <td scope="col"><img src="images/16X16/status_offline.png" alt="Offline" border="0" usemap="#O" /><img src="images/16X16/shield.png" alt="Shield" /></td>
+                 	<td scope="col">John Doe</td>
+                    <td scope="col"><a href="#">john.doe@myinternet.com</a></td>
+                    <td scope="col">12/12/2009</td>
+                    <td scope="col">24/4/2010</td>
+                </tr>
+                
+                <tr>
+                    <td scope="col"><input type="checkbox" name="checkbox11" id="checkbox11" /></td>
+                    <td scope="col"><img src="images/16X16/status_offline.png" alt="Offline" border="0" usemap="#O" /></td>
+                    <td scope="col">John Doe</td>
+                    <td scope="col"><a href="#">john.doe@myinternet.com</a></td>
+                    <td scope="col">12/12/2009</td>
+                    <td scope="col">24/4/2010</td>
+                </tr>
+            </table>
+            <!-- END TABULAR DATA EXAMPLE -->
+           
+          <ul id="pagination">
+              <li class="previous-off">&laquo;Previous</li>
+              <li class="active">1</li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+              <li><a href="#">6</a></li>
+              <li><a href="#">7</a></li>
+              <li><a href="#">8</a></li>
+              <li><a href="#">9</a></li>
+              <li><a href="#">10</a></li>
+              
+              <li class="next"><a href="#">Next &raquo;</a></li>
+          </ul>
+           
+           
+           
+            
+    <!-- APPLY SELECTED FORM FOR TABLE -->
+            <form action="" method="get">
+            
+                  <label for="select1"></label><br />
+                  
+                    <select name="select" id="select1" class="select">
+                    
+                        <option value="One">Delete</option>
+                        <option value="Two">Edit</option>
+                    </select>
+                    
+                  <input type="submit" id="select2" class="submit" value="Apply to Selected" />
+            </form>
+            <!-- END APPLY TO ALL FORM-->
+    </div>   
+    <!-- END TAB-1 --> 
+    
+    <!-- TAB-2 -->      
+	<div id="tabs-2">
+		
+        <!--START FORMS EXAMPLE -->
+        <h3> Form Example</h3>
+        
+        <p>Forms are great for collecting data or simply for use in your web application. Visual Admin has tried themed many form elements straight out of the box, and whats more they've already been pre-sized and formatted for you so you can simply get on and use them straight out the box.</p>
+
+      <form action="" method="post" enctype="multipart/form-data">
+        
+        <!-- DATEPICKER -->
+      	<p>
+            <label>Date Picker</label><br />
+            <input id="datepicker" type="text" class="text date" />
+        </p>
+        
+        <!-- CHECKBOXES -->
+        <p>
+        	<input type="checkbox" class="checkbox" checked="checked" id="cbdemo1" /> 
+        	<label for="cbdemo1">Checkbox label</label> 
+            <input type="checkbox" class="checkbox" id="cbdemo2" />
+            <label for="cbdemo2">Checkbox label</label>
+        </p>
+        
+        <!-- RADIO GROUPS -->
+        <p>	
+            <input type="radio" name="radio" id="RADIO1" value="RADIO1" />
+            <label for="RADIO1">RADIO ONE</label>
+            <input type="radio" name="radio" id="RADIO2" value="RADIO2" />
+            <label for="RADIO2">RADIO TWO</label>
+            <input type="radio" name="radio" id="RADIO3" value="RADIO3" />
+            <label for="RADIO3">RADIO THREE</label>
+        </p>
+        
+        <p>
+          <label for="file"></label>
+          <input type="file" name="file" id="file" />
+          <img src="images/ajax-loaders/circle-ball.gif" alt="Loading..." width="16" height="16" />        </p>
+        
+        <!-- TEXTBOXES -->
+        <p>
+            <label>Large Input Box:</label><br />
+            <input type="text" class="text big" />
+        </p>
+        
+        <p>
+            <label>Medium Input Box:</label><br />
+            <input type="text" class="text medium error" /> 
+        </p>
+        
+        <p>
+            <label>Small Input Box:</label><br />
+            <input type="text" class="text small" />
+        </p>
+        
+        <!-- COMBO SELECT BOX -->
+        <p>
+            <label for="cbo">Dropdown/Combo Box:</label><br />
+            <select name="cbo" id="cbo" class="select">
+                <option value="One">One</option>
+                <option value="Two">Two</option>
+                <option value="Three">Three</option>
+                <option value="Four">Four</option>
+                <option value="Five">Five</option>
+            </select>
+        </p>
+        
+        <!-- WYSIWYG -->
+        <p>
+            <label>Textarea label:</label><br />
+            <textarea cols="75" rows="8" class="wysiwyg"></textarea>
+        </p>
+        
+        <p>
+          <input type="submit" class="submit" value="Button" />
+          <input name="Submit2" type="submit" class="submit" value="Another Button" />
+          <input name="Reset2" type="submit" class="submit special" value="Special Button" />
+        </p>
+      </form>
+      <!-- END FORMS EXAMPLE -->
+	</div>
+	<!-- END TAB-2 -->  
+    
+    <!-- START TAB-3 -->  
+    <div id="tabs-3">
+    
+            <!-- TYPOGRAPHY EXAMPLES -->
+            <h3>Typography</h3>
+            
+            <p>Here is an example of the typography used in this theme. I've listed the different heading levels followed by some dummy paragraph text. I've also sprinkled some links in too.</p>
+                
+                <h1>This is a H1 Heading</h1>
+                
+                <p>Sed sed tellus neque, at porta felis. Pellentesque dignissim aliquam mi  eget tristique. Aliquam erat volutpat. Lorem ipsum dolor sit amet,  consectetur adipiscing elit. Cras sodales pretium pharetra. <a href="#">Vestibulum</a> porta massa ut est sagittis fringilla. Curabitur sed posuere odio. Sed  ac nisi mi, a ultricies est. Nam elementum tristique purus, id viverra  mi mattis eget. Integer in adipiscing dui. Sed lacinia porttitor  turpis, ut accumsan nunc venenatis sed. Nunc ultricies <a href="#">imperdiet</a> luctus. Suspendisse mollis, nisl a congue aliquet, turpis leo feugiat  nulla, vitae fringilla eros neque eu risus. Mauris pellentesque  placerat nisi ac pharetra. </p>
+               
+                <blockquote>
+                
+                    <p>This is an example blockquote, after applying some styling. Make something similar, or do your own thing.</p>
+                </blockquote>
+        
+                <h2>This is a H2 Heading</h2>
+               
+                <!--  Ordered List -->
+                <ol>
+                
+                    <li>List Item 1</li>
+                    <li>List Item 2</li>
+                    <li>List Item 3</li>
+                </ol>
+                
+                <dl>
+                
+                    <dt>Definition List Title</dt>
+                    <dd>This is a definition list division.</dd>
+                </dl>
+                
+                <h3>This is a H3 Heading</h3>
+                
+                <p>Suspendisse, nisl a congue aliquet, turpis leo feugiat eros neque eu risus. Mauris pellentesque nisi ac pharetra.</p>
+                
+                <h4>This is a H4 Heading</h4>
+                
+                <h5>This is a H5 Heading</h5>
+                
+                <p>Suspendisse mollis, , turpis leo feugiat, vitae fringilla eros neque risus. Mauris pellentesque  placerat ac pharetra.</p>
+                
+                <h6>This is a H6 Heading</h6>
+                
+                <!--  Unordered List -->
+                <ul>
+                
+                    <li>List Item 1</li>
+                    <li>List Item 2</li>
+                    <li>List Item </li>
+                    
+                </ul>   
+                <!-- END TYPOGRAPHY EXAMPLES -->
+        </div>
+    	<!-- END TAB-3 --> 
+        
+        <!-- START TAB-4 --> 
+        <div id="tabs-4">
+           
+           <!-- INLINE DATE PICKER-->
+            <h3>Inline Date Picker</h3>
+            <div id="datepicker-inline"></div>
+            
+            <!-- OTHER ELEMENTS-->
+            <h3>Progress Bar</h3>
+            
+            <div id="progressbar"></div>
+            
+            <h3>Slider</h3>
+            
+            <div id="slider"></div>
+            
+       </div>
+       <!-- END TAB-4 --> 
+       
+      </div>
+      <!-- END TABS -->
+      
+      
+</div>
+  <!-- END CONTENT -->
+  
+  
+  
+    <!-- START FOOTER -->
+    
+    <div id="footer" class="grid_12">
+    
+        <p>&copy; Copyright 2015 SECURITI.US | Powered by <a href="http://github.com/JohnMartinelli/SECURITIplatform">SECURITIplatform</a> | <a href="#">Top</a><a href="#"></a></p>
+	</div>
+    <!-- END FOOTER -->  
+    
+    
+    
+</div>
+
+<!-- Info is shown when a link with these 
+attributes are clicked: href="#info" rel="facebox"  -->
+
+<div id="info" class="pngfix" style="display:none;"> 
+
+    <h3>Messages</h3>
+    
+    <div class="pngfix notification messages canhide">
+    
+        <p><strong>WELCOME BACK JOHN.</strong>YOU HAVE 2 NEW MESSAGES IN YOUR INBOX</p>
+        
+	</div>
+    
+    <!-- DIV TO CLEAR THE FLOATS -->
+    <div class="clearfix">&nbsp;</div>
+    
+    <!-- MESSAGE DIV -->
+    <div class="message">
+    
+        <h4>28rd April 2010 <small>from Admin</small></h4>
+        
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor faucibus tellus, at suscipit metus vestibulum tristique. Duis eget metus neque. In non magna lorem. Nam non arcu eu odio blandit lobortis. <a href="#">DELETE</a></p>
+
+   </div>
+   
+   <!-- MESSAGE DIV --> 
+   <div class="message">
+    <h4>23rd April 2010 <small>from Admin</small></h4>
+        
+    <p>
+        Vestibulum in ante faucibus est facilisis iaculis pharetra quis mi. Fusce vitae mauris sit amet elit dapibus molestie. Duis tincidunt, urna in mollis congue, neque odio porttitor ipsum, ut consequat leo tellus sed felis. Sed bibendum, dolor eget sagittis cursus, nunc elit scelerisque purus, sed pulvinar risus mi a mauris. <a href="#">DELETE</a></p>
+   </div>
+    
+    <!-- FORM FOR NEW MESSAGE --> 
+    <form action="" method="post">
+    
+        <h3>New Message</h3>
+        
+        <fieldset>
+        
+            <textarea class="textarea" name="textfield" cols="55" rows="5"></textarea>
+        
+        </fieldset>
+        
+        <fieldset>
+        
+            <select name="combo" class="select">
+            
+                <option value="option1">Send to...</option>
+                <option value="option2">Admin</option>
+                <option value="option2">I.T.</option>
+                <option value="option3">Sales</option>
+        
+            </select>
+        
+        	<input type="submit" class="submit" value="Send" />
+        
+        </fieldset>
+    
+    
+    </form>
+
+</div> <!-- End #Info -->
+
+
+</body>
+</html>
